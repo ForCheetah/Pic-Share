@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast">
+
+    <class name="whs.user.domain.User" table="uuser">
+        <id name="uid" column="uid">
+            <generator class="assigned"/>
+        </id>
+        <property name="uphoto" column="uPhoto"/>
+        <property name="uimg" column="uImg"/>
+        <property name="uname" column="uName"/>
+        <property name="upassword" column="uPassword"/>
+        <property name="usex" column="uSex"/>
+        <property name="uage" column="uAge"/>
+        <property name="uexpress" column="uExpress"/>
+        <property name="ulogintime" column="uLoginTime"/>
+        <property name="motto" column="motto"/>
+        <set name="pictureSet" inverse="true" >
+            <key column="uid"/>
+            <one-to-many class="whs.picture.domain.Picture" />
+        </set>
+
+    </class>
+
+
+
+</hibernate-mapping>

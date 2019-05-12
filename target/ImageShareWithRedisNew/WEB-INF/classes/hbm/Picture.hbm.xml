@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast">
+
+    <class name="whs.picture.domain.Picture" table="picture">
+        <id name="pid" column="pid">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="pname" column="pname"/>
+        <property name="purl" column="purl"/>
+
+        <property name="pisprivate" column="pisprivate"/>
+        <property name="pexpress" column="pexpress"/>
+        <many-to-one name="user" class="whs.user.domain.User" column="uid"/>
+
+
+    </class>
+
+
+
+</hibernate-mapping>

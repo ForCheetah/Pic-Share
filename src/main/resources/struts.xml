@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!--<constant name="struts.enable.DynamicMethodInvocation" value="true"/>-->
+
+
+    <constant name="struts.devMode" value="true"/>
+
+
+    <constant name="struts.multipart.maxSize" value="20000000"/>
+
+    <!--换版本之后出现了那么多的错误，需要加：strict-method-invocation="false"，要不然不能使用通配符-->
+    <package name="default" extends="struts-default" namespace="/" strict-method-invocation="false">
+
+        <interceptors>
+            <interceptor name="loginInterceptor" class="loginIntercepter"/>
+        </interceptors>
+        <!--<interceptors>-->
+            <!--<interceptor name="loginInterceptor" class="myInterceptor"/>-->
+        <!--</interceptors>-->
+
+        <!--<global-results>-->
+            <!--<result name="login">/admin/index.jsp</result>-->
+        <!--</global-results>-->
+
+        <action name="test" class="test" method="execute">
+            <result name="test">index.jsp</result>
+        </action>
+
+
+
+
+        <action name="user_*" class="userAction" method="{1}">
+            <result name="success">WEB-INF/jsps/mainPage/index.jsp</result>
+            <result name="goToLoginPage">WEB-INF/jsps/login/login.jsp</result>
+            <result name="saveUserSuccess">WEB-INF/jsps/login/login.jsp</result>
+            <result name="saveFiled">WEB-INF/jsps/login/login.jsp</result>
+            <result name="loginFiled">WEB-INF/jsps/login/login.jsp</result>
+            <result name="loginSuccess" type="redirectAction">picture_showPool?page=1</result>
+            <result name="findPersionalPageSuccess">WEB-INF/jsps/mainPage/persional.jsp</result>
+            <result name="contactUs">WEB-INF/jsps/mainPage/contact.jsp</result>
+            <result name="goToUpdatePage">WEB-INF/jsps/mainPage/updateUser.jsp</result>
+            <result name="updateSuccess">WEB-INF/jsps/mainPage/persional.jsp</result>
+
+            <interceptor-ref name="loginInterceptor">
+                <param name="includeMethods">findPersionalPage,updateUser,updateData</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+
+        </action>
+        <action name="verifyCode" class="verifyCodeAction" method="getVerifyCode"/>
+
+        <action name="picture_*" class="pictureAction" method="{1}">
+            <result name="showPoolSuccess">WEB-INF/jsps/mainPage/pool.jsp</result>
+            <result name="showFlowSuccess">WEB-INF/jsps/mainPage/flow.jsp</result>
+            <result name="showPersionalPageSuccess">WEB-INF/jsps/mainPage/persionalPool.jsp</result>
+            <result name="getPictureSuccess">WEB-INF/jsps/mainPage/pictureHome.jsp</result>
+            <result name="goToUpdatePage">WEB-INF/jsps/mainPage/updatePicture.jsp</result>
+            <result name="updatePictureSuccess">WEB-INF/jsps/mainPage/pictureHome.jsp</result>
+
+            <interceptor-ref name="loginInterceptor">
+                <param name="includeMethods">savePicture,showPersionalPage,updatePicPage,updateData</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+        </action>
+        <!--<action name="user_*" class="registAction" method="{1}">-->
+            <!--<result name="registSuccess">/WEB-INF/jsp/msg.jsp</result>-->
+            <!--<result name="comeToRegist">/WEB-INF/jsp/regist.jsp</result>-->
+            <!--<result name="registInput" >/WEB-INF/jsp/regist.jsp</result>-->
+            <!--<result name="loginInput" >/WEB-INF/jsp/login.jsp</result>-->
+            <!--<result name="loginPage">/WEB-INF/jsp/login.jsp</result>-->
+            <!--<result name="loginSuccess" type="redirectAction">index</result>-->
+            <!--<result name="loginError">/WEB-INF/jsp/msg.jsp</result>-->
+        <!--</action>-->
+
+
+        <!--<action name="verifyCode" class="verifyCodeAction" method="getVerifyCode">-->
+
+        <!--</action>-->
+
+        <!--<action name="product_*" class="productAction" method="{1}">-->
+            <!--<result name="findByCidSuccess">/WEB-INF/jsp/list.jsp</result>-->
+            <!--<result name="findByPidSuccess">/WEB-INF/jsp/desc.jsp</result>-->
+            <!--<result name="findByCsidSuccess">/WEB-INF/jsp/cslist.jsp</result>-->
+            <!--<result name="adminFindAllSuccess">/admin/product/list.jsp</result>-->
+            <!--<result name="addPageSuccess">/admin/product/add.jsp</result>-->
+            <!--<result name="saveSuccess" type="redirectAction">product_adminFindAll.action?page=1</result>-->
+
+            <!--<interceptor-ref name="loginInterceptor">-->
+                <!--<param name="includeMethods">adminFindAll,save,addPage</param>-->
+            <!--</interceptor-ref>-->
+            <!--<interceptor-ref name="defaultStack"/>-->
+
+        <!--</action>-->
+        <!---->
+        <!--<action name="cart_*" class="cartAction" method="{1}">-->
+            <!--<result name="addCartSuccess">/WEB-INF/jsp/cart.jsp</result>-->
+            <!--<result name="clearCartSuccess">/WEB-INF/jsp/cart.jsp</result>-->
+            <!--<result name="removeCartSuccess">/WEB-INF/jsp/cart.jsp</result>-->
+            <!--<result name="myCart">/WEB-INF/jsp/cart.jsp</result>-->
+        <!--</action>-->
+
+
+
+        <!--<action name="order_*" class="orderAction" method="{1}">-->
+            <!--<result name="saveOrderError">/WEB-INF/jsp/msg.jsp</result>-->
+            <!--<result name="saveOrderSuccess">/WEB-INF/jsp/order.jsp</result>-->
+            <!--<result name="findByUidSuccess">/WEB-INF/jsp/orderList.jsp</result>-->
+            <!--<result name="findByOidSuccess">/WEB-INF/jsp/order.jsp</result>-->
+            <!--<result name="adminFindOrderSuccess">/admin/order/list.jsp</result>-->
+            <!--<result name="adminFindFourOrderSuccess">/admin/order/fourList.jsp</result>-->
+            <!--<result name="adminUpdateStateSuccess" type="redirectAction">order_adminFindAll.action?page=1</result>-->
+            <!--<result name="updateStateSuccess" type="redirectAction">order_findByUid.action</result>-->
+
+
+            <!--<interceptor-ref name="loginInterceptor">-->
+                <!--<param name="includeMethods">adminUpdateState,adminFindAll,adminFindByState,</param>-->
+            <!--</interceptor-ref>-->
+            <!--<interceptor-ref name="defaultStack"/>-->
+        <!--</action>-->
+        <!---->
+        <!---->
+        <!--<action name="adminUser_*" class="adminUserAction" method="{1}">-->
+            <!--<result name="loginSuccess" type="redirect">/admin/home.jsp</result>-->
+            <!--<result name="index">/admin/index.jsp</result>-->
+            <!---->
+
+        <!--</action>-->
+
+        <!--<action name="category_*" class="categoryAction" method="{1}">-->
+            <!--<result name="adminFindAllSuccess" >/admin/category/list.jsp</result>-->
+            <!--<result name="saveCategorySuccess" type="redirectAction">category_adminFindAll</result>-->
+            <!--<result name="eidtSuccess">/admin/category/edit.jsp</result>-->
+            <!--<result name="updateSuccess" type="redirectAction">category_adminFindAll</result>-->
+
+            <!--<interceptor-ref name="loginInterceptor">-->
+            <!--</interceptor-ref>-->
+            <!--<interceptor-ref name="defaultStack"/>-->
+        <!--</action>-->
+        <!---->
+        <!--<action name="categorySecond_*" class="categorySecondAction" method="{1}">-->
+            <!--<result name="adminFindAllSuccess">/admin/categorySecond/list.jsp</result>-->
+            <!--<result name="addPageSuccess">/admin/categorySecond/add.jsp</result>-->
+            <!--<result name="saveSuccess" type="redirectAction">categorySecond_adminFindAll?page=1</result>-->
+
+            <!--<interceptor-ref name="loginInterceptor">-->
+            <!--</interceptor-ref>-->
+            <!--<interceptor-ref name="defaultStack"/>-->
+        <!--</action>-->
+
+    </package>
+
+
+    <!-- Add packages here -->
+
+</struts>

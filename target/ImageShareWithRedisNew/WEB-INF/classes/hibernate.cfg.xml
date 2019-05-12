@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/whsnet?rewriteBatchedStatements=true&amp;useServerPstmts=true</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">123</property>
+        <!--hibernatede方言-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!--一些可以选的属性-->
+        <!--显示sql-->
+        <property name="hibernate.show_sql">true</property>
+        <!--格式换sql-->
+        <property name="hibernate.format_sql">true</property>
+        <!--hbm映射到DDL-->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!--设置自动提交事务-->
+        <property name="hibernate.connection.autocommit">false</property>
+
+
+        <!--下面是通过c3p0连接池来管理-->
+
+        <property name="connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+
+        <!--在连接池中可用的数据库连接的最少数目 -->
+        <property name="c3p0.min_size">5</property>
+        <!--在连接池中所有数据库连接的最大数目  -->
+        <property name="c3p0.max_size">20</property>
+        <!--设定数据库连接的过期时间,以秒为单位,
+        如果连接池中的某个数据库连接处于空闲状态的时间超过了timeout时间,就会从连接池中清除 -->
+        <property name="c3p0.timeout">120</property>
+        <!--每3000秒检查所有连接池中的空闲连接 以秒为单位-->
+        <property name="c3p0.idle_test_period">3000</property>
+
+        <!--通知hibernate加载那些映射文件-->
+        <mapping resource="hbm/User.hbm.xml"/>
+        <mapping resource="hbm/Picture.hbm.xml"/>
+
+
+        <!--<mapping resource="cn/itcast/shopNet/user/domain/User.hdm.xml"/>-->
+        <!--<mapping resource="cn/itcast/shopNet/category/domain/Category.hdm.xml"/>-->
+        <!--<mapping resource="cn/itcast/shopNet/product/domain/Product.hdm.xml"/>-->
+        <!--<mapping resource="cn/itcast/shopNet/categorySecond/domain/CategorySecond.hdm.xml"/>-->
+        <!--<mapping resource="cn/itcast/shopNet/order/Order.hdm.xml"/>-->
+        <!--<mapping resource="cn/itcast/shopNet/order/OrderItem.hdm.xml"/>-->
+        <!--<mapping resource="cn/itcast/shopNet/adminUser/AdminUser.hdm.xml"/>-->
+
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+<!-- 零障碍整合 在spring配置文件中引入hibernate的配置文件 -->
+<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+    <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+</bean>
+
+
+
+<!-- 管理事务 --><!--配置事务管理器-->
+<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+    <property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+
+<!-- 注解开启事务 -->
+<tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+    <!--配置ACtion-->
+
+    <bean id="userAction" class="whs.user.action.UserAction" scope="prototype">
+        <property name="userService" ref="userService"/>
+    </bean>
+    <bean id="verifyCodeAction" class="whs.user.action.verifyCodeAction" scope="prototype"/>
+    <bean id="pictureAction" class="whs.picture.action.PictureAction" scope="prototype">
+        <property name="pictureService" ref="pictureService"/>
+        <property name="userService" ref="userService"/>
+    </bean>
+
+    <bean id="test" class="utils.TestAction" scope="prototype"/>
+
+
+    <!--<bean id="registAction" class="cn.itcast.shopNet.user.action.UserAction" scope="prototype">-->
+        <!--<property name="userService" ref="userService"/>-->
+    <!--</bean>-->
+    <!--<bean id="verifyCodeAction" class="cn.itcast.shopNet.user.action.verifyCodeAction" scope="prototype"/>-->
+    <!--<bean id="categoryAction" class="cn.itcast.shopNet.category.action.CategoryAction" scope="prototype">-->
+        <!--<property name="categoryService" ref="categoryService"/>-->
+    <!--</bean>-->
+    <!--<bean id="productAction" class="cn.itcast.shopNet.product.action.ProductAction" scope="prototype">-->
+        <!--<property name="productService" ref="productService"/>-->
+        <!--<property name="categoryService" ref="categoryService"/>-->
+        <!--<property name="categorySecondService" ref="categorySecondService"/>-->
+    <!--</bean>-->
+    <!--<bean id="categorySecondAction" class="cn.itcast.shopNet.categorySecond.action.CategorySecondActon">-->
+        <!--<property name="categorySecondService" ref="categorySecondService"/>-->
+        <!--<property name="categoryService" ref="categoryService"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="cartAction" class="cn.itcast.shopNet.cart.CartAction" scope="prototype">-->
+        <!--<property name="productService" ref="productService"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="orderAction" class="cn.itcast.shopNet.order.OrderAction" scope="prototype">-->
+        <!--<property name="orderService" ref="orderService"/>-->
+    <!--</bean>-->
+    <!--<bean id="adminUserAction" class="cn.itcast.shopNet.adminUser.AdminUserAction" scope="prototype">-->
+        <!--<property name="adminUserService" ref="adminUserService"/>-->
+    <!--</bean>-->
+
+
+
+
+
+
+    <!--配置Service-->
+    <bean id="userService" class="whs.user.service.UserService">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+    <bean id="pictureService" class="whs.picture.service.PictureService">
+        <property name="pictureDao" ref="pictureDao"/>
+    </bean>
+    <!--<bean id="userService" class="cn.itcast.shopNet.user.service.UserService">-->
+        <!--<property name="userDao" ref="userDao"/>-->
+    <!--</bean>-->
+    <!--<bean id="categoryService" class="cn.itcast.shopNet.category.service.CategoryService">-->
+        <!--<property name="categoryDao" ref="categoryDao"/>-->
+    <!--</bean>-->
+    <!--<bean id="productService" class="cn.itcast.shopNet.product.service.ProductService">-->
+        <!--<property name="productDao" ref="productDao"/>-->
+    <!--</bean>-->
+    <!--<bean id="categorySecondService" class="cn.itcast.shopNet.categorySecond.service.CategorySecondService">-->
+        <!--<property name="categorySecondDao" ref="categorySecondDao"/>-->
+    <!--</bean>-->
+    <!--<bean id="orderService" class="cn.itcast.shopNet.order.OrderService">-->
+        <!--<property name="orderDao" ref="orderDao"/>-->
+    <!--</bean>-->
+    <!--<bean id="adminUserService" class="cn.itcast.shopNet.adminUser.AdminUserService">-->
+        <!--<property name="adminUserDao" ref="adminUserDao"/>-->
+    <!--</bean>-->
+
+
+
+
+
+    <!--配置dao-->
+    <bean id="userDao" class="whs.user.dao.UserDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="pictureDao" class="whs.picture.dao.PictureDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <!--<bean id="userDao" class="cn.itcast.shopNet.user.dao.UserDao" >-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    <!--</bean>-->
+    <!--<bean id="categoryDao" class="cn.itcast.shopNet.category.dao.CategoryDao">-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    <!--</bean>-->
+    <!--<bean id="productDao" class="cn.itcast.shopNet.product.dao.ProductDao">-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    <!--</bean>-->
+    <!--<bean id="categorySecondDao" class="cn.itcast.shopNet.categorySecond.dao.CategorySecondDao">-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    <!--</bean>-->
+    <!--<bean id="orderDao" class="cn.itcast.shopNet.order.OrderDao" >-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    <!--</bean>-->
+    <!--<bean id="adminUserDao" class="cn.itcast.shopNet.adminUser.AdminUserDao">-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    <!--</bean>-->
+
+
+
+
+    <!-- 引入properties配置文件 -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:redis.properties</value>
+                <!--要是有多个配置文件，只需在这里继续添加即可 -->
+            </list>
+        </property>
+    </bean>
+
+    <!--新加入的redis配置-->
+    <!--jedis配置-->
+    <!--<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig" >-->
+        <!--<property name="maxIdle" value="${redis.maxIdle}" />-->
+        <!--<property name="maxWaitMillis" value="${redis.maxWait}" />-->
+        <!--<property name="testOnBorrow" value="${redis.testOnBorrow}" />-->
+    <!--</bean >-->
+    <!--&lt;!&ndash; redis服务器中心 &ndash;&gt;-->
+    <!--<bean id="connectionFactory"  class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" >-->
+        <!--<property name="poolConfig" ref="poolConfig" />-->
+        <!--<property name="port" value="${redis.port}" />-->
+        <!--<property name="hostName" value="${redis.host}" />-->
+        <!--<property name="password" value="${redis.password}" />-->
+        <!--<property name="timeout" value="${redis.timeout}" />-->
+    <!--</bean >-->
+    <!--<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" >-->
+        <!--<property name="connectionFactory" ref="connectionFactory" />-->
+        <!--<property name="keySerializer" >-->
+            <!--<bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />-->
+        <!--</property>-->
+        <!--<property name="valueSerializer" >-->
+            <!--<bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />-->
+        <!--</property>-->
+    <!--</bean >-->
+
+
+
+
+
+    <!--&lt;!&ndash;拦截器&ndash;&gt;-->
+    <!--<bean id="myInterceptor" class="cn.itcast.shopNet.loginInterceptor.LoginInterceptor"/>-->
+
+    <bean id="loginIntercepter" class="whs.intercepter.LoginIntercepter" scope="prototype"/>
+
+
+
+</beans>
+
+
+

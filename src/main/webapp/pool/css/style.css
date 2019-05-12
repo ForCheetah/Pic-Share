@@ -1,0 +1,149 @@
+
+.wrapper{
+  width: 600px;
+  min-height: 10px;
+  margin:20px auto;
+}
+.archive-pages li a:hover{
+  color:#9Aff02;/*鼠标放在数字上面的颜色*/
+}
+.archive-pages li.selected{
+  color:#545454; 
+}
+.archive-pages a,
+.archive-pages a:visited{/*数字的颜色*/
+  color:#00FFFF;
+}
+.archive-pages li.selected{
+  color:#FFFF00;/*选中的数字颜色*/
+  padding:5px;
+  width:40px;
+  line-height:20px;
+  background: rgb(2,121,214); 
+  background: -moz-radial-gradient(center, ellipse cover,  rgba(53,121,214,1) 0%, rgba(53,121,214,1) 91%, rgba(27,85,157,1) 100%); 
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(53,121,214,1)), color-stop(91%,rgba(53,121,214,1)), color-stop(100%,rgba(27,85,157,1))); 
+  background: -webkit-radial-gradient(center, ellipse cover,  rgba(53,121,214,1) 0%,rgba(53,121,214,1) 91%,rgba(27,85,157,1) 100%); 
+  background: -o-radial-gradient(center, ellipse cover,  rgba(53,121,214,1) 0%,rgba(53,121,214,1) 91%,rgba(27,85,157,1) 100%); 
+  background: -ms-radial-gradient(center, ellipse cover,  rgba(53,121,214,1) 0%,rgba(53,121,214,1) 91%,rgba(27,85,157,1) 100%); 
+  background: radial-gradient(ellipse at center,  rgba(53,121,214,1) 0%,rgba(53,121,214,1) 91%,rgba(27,85,157,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3579d6', endColorstr='#1b559d',GradientType=1 ); 
+}
+.archive-pages li.selected:hover{
+  cursor:default;
+  background: rgb(53,121,214); 
+  background: -moz-radial-gradient(center, ellipse cover,  rgba(53,121,214,1) 0%, rgba(53,121,214,1) 91%, rgba(27,85,157,1) 100%); 
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(53,121,214,1)), color-stop(91%,rgba(53,121,214,1)), color-stop(100%,rgba(27,85,157,1))); 
+  background: -webkit-radial-gradient(center, ellipse cover,  rgba(53,121,214,1) 0%,rgba(53,121,214,1) 91%,rgba(27,85,157,1) 100%); 
+  background: -o-radial-gradient(center, ellipse cover,  rgba(53,121,214,1) 0%,rgba(53,121,214,1) 91%,rgba(27,85,157,1) 100%); 
+  background: -ms-radial-gradient(center, ellipse cover,  rgba(53,121,214,1) 0%,rgba(53,121,214,1) 91%,rgba(27,85,157,1) 100%); 
+  background: radial-gradient(ellipse at center,  rgba(53,121,214,1) 0%,rgba(53,121,214,1) 91%,rgba(27,85,157,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3579d6', endColorstr='#1b559d',GradientType=1 );
+}
+.archive-pages li:hover{
+  background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(196,196,196,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(196,196,196,1))); 
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(196,196,196,1) 100%); 
+  background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(196,196,196,1) 100%); 
+  background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(196,196,196,1) 100%);
+  background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(196,196,196,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#c4c4c4',GradientType=0 ); 
+}
+.archive-pages li a{
+  cursor:pointer; 
+  line-height:20px;
+  display:block;
+  padding:5px;
+  float:left;
+  width:35px;
+  text-aling:center;
+}
+.archive-pages{
+  diaply:block;
+  background-color:#444444;
+  float:left;
+  padding:0px;
+  margin:0px;
+  font-size:.9em;
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  border:1px solid silver;
+  border-radius: 3px; 
+  -moz-border-radius: 3px; 
+  -webkit-border-radius: 3px;
+}
+.archive-pages ul{
+  float:left;
+  margin:0px;
+  padding:10px;
+  list-style:none;
+}
+.archive-pages li{
+  border:1px solid silver;
+  float:left;
+  font-weight:700;
+  margin:0 2px;
+  text-align:center;
+  border-radius: 3px; 
+  -moz-border-radius: 3px; 
+  -webkit-border-radius: 3px;  
+  background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(214,214,214,1) 100%); 
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(214,214,214,1))); 
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(214,214,214,1) 100%); 
+  background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(214,214,214,1) 100%); 
+  background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(214,214,214,1) 100%); 
+  background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(214,214,214,1) 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#d6d6d6',GradientType=0 );
+}
+.archive-pages .first a,
+.archive-pages .previous a,
+.archive-pages .next a,
+.archive-pages .last a{
+  overflow:hidden;
+  white-space:nowrap;
+  -webkit-transition-duration: 300ms;
+  -webkit-transition-property: width,text-indent,letter-spacing;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-duration: 300ms;
+  -moz-transition-property: width,text-indent,letter-spacing;
+  -moz-transition-timing-function: ease;
+  -o-transition-duration: 300ms;
+  -o-transition-property: width,text-indent,letter-spacing;
+  -o-transition-timing-function: ease;
+  transition-duration: 300ms;
+  transition-property: width,text-indent,letter-spacing;
+  transition-timing-function: ease;
+}
+.archive-pages a{
+  text-decoration:none; 
+}
+.archive-pages .next a:after,
+.archive-pages .last a:after{
+  content:" »";
+}
+.archive-pages .first a:before,
+.archive-pages .previous a:before{
+  content:'« '
+}
+.archive-pages .first a:hover,
+.archive-pages .previous a:hover,
+.archive-pages .next a:hover,
+.archive-pages .last a:hover{
+  width: 100px;
+  text-indent:0;
+  letter-spacing:0px;
+}
+.archive-pages .first a{
+  text-indent:+6px;
+  letter-spacing:20px;
+}
+.archive-pages .previous a{
+  text-indent:+7px;
+  letter-spacing:20px;
+}
+.archive-pages .next a{
+  text-indent:-140px;
+  letter-spacing:25px;
+}
+.archive-pages .last a{
+    text-indent:-120px;
+  letter-spacing:32px;
+}
